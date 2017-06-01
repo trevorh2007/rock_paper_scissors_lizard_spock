@@ -1,3 +1,4 @@
+require 'pry'
 @user_win = 0
 @cpu_win = 0
 @tie = 0
