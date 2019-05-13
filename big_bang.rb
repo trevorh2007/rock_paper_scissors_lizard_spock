@@ -55,15 +55,40 @@ def anim(string)
   end
 end
 
+def invalid_play_again
+	anim("invalid choice")
+	puts "\n"
+	anim("Play again? (y/n)")
+	puts "\n"
+	user_choice = gets.chomp.downcase
+	if user_choice === 'y' || user_choice === 'yes'
+		game
+	elsif user_choice === 'n' || user_choice === 'no'
+		puts "You played a total of #{@game_count} games"
+		puts "Final stats: #{@user_win} wins, #{@cpu_win} losses, #{@tie} ties."
+		exit
+	else 
+		invalid_play_again
+	end
+end
+
 def play_again
 	sleep(1.5)
 	puts "\n"
 	puts "You've played #{@game_count} games"
 	puts "#{@user_win} wins, #{@cpu_win} losses, #{@tie} ties."
 	puts
-	puts "Play again?"
+	puts "Play again? (y/n)"
 	user_choice = gets.chomp.downcase
-	game if user_choice != 'n' || user_choice != 'N'
+	if user_choice === 'y' || user_choice === 'yes'
+		game
+	elsif user_choice === 'n' || user_choice === 'no'
+		puts "You played a total of #{@game_count} games"
+		puts "Final stats: #{@user_win} wins, #{@cpu_win} losses, #{@tie} ties."
+		exit
+	else 
+		invalid_play_again
+	end
 end
 
 game
